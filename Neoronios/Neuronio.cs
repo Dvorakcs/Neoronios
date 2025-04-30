@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neoronios
+namespace Neuronios
 {
     public class sinapse
     {
         public double value;
         public double peso;
     }
-    public class Neoronio
+    public class Neuronio
     {
         //sinapses 
         public sinapse[] _sinapses;
-        public Neoronio(sinapse[] sinapse)
+        public Neuronio(sinapse[] sinapse)
         {
             _sinapses = sinapse;
         }
@@ -30,7 +30,16 @@ namespace Neoronios
 
             return sum;
         }
-       
+        public double pesoStar(double[] Ys, sinapse[] sinapses)
+        {
+            double sum = 0;
+            for (int i = 0; i < Ys.Length; i++)
+            {
+                double error = (Ys[i] - Z(sinapses));
+                sum += error * error;
+            }
+            return sum;
+        }
         public double[] CalcularDerivadas(double[] Ys, sinapse[] sinapses)
         {
             double[] derivadas = new double[sinapses.Length];
@@ -64,11 +73,7 @@ namespace Neoronios
             return 1 / (Math.Sqrt(2 * Math.PI)) * Math.Exp(-0.5 * x * x);
         }
 
-        /*
-         * FOR PASSIENTE J = 1 (D (X,W,Y) = (Yi - F(Xi,w))*2)
-         * para achar o maximo de uma funcao a derivada dela tem que ser igual a zero
-         * 
-         */
+        
      
 
     }
