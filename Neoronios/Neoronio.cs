@@ -30,28 +30,24 @@ namespace Neoronios
 
             return sum;
         }
-        public double ZNegativo(sinapse[] sinapses)
+       
+        public double[] CalcularDerivadas(double[] Ys, sinapse[] sinapses)
         {
-            double sum = 0;
-            for (int i = 0; i < sinapses.Length; i++)
+            double[] derivadas = new double[sinapses.Length];
+
+            for (int j = 0; j < sinapses.Length; j++)
             {
-                sum -= (sinapses[i].value * sinapses[i].peso);
+                double derivada = 0;
+                for (int i = 0; i < Ys.Length; i++)
+                {
+                    double error = (Ys[i] - Z(sinapses));
+                    derivada += -2 * error * sinapses[j].value;
+                }
+                derivadas[j] = derivada;
             }
 
-            return sum;
+            return derivadas;
         }
-        public double pesoStar(double[] Ys, sinapse[] sinapses)
-        {
-            double sum = 0;
-            
-            for (int i = 0; i < Ys.Length; i++) {
-                   //Σ w0 = Yi-f(x->,w->)*2
-                double erro =  (Ys[i] - Z(sinapses));
-                sum += erro * erro;
-            }
-            return sum;
-        }
-        
         //funcoes de transferencia
         public double Fsimples(double x)
         {

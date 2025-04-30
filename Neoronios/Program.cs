@@ -25,5 +25,5 @@ sinapse[] sinapses = new sinapse[]{
 };
 Neoronio neoronio = new Neoronio(sinapses);
 
-double valor = neoronio.pesoStar(new double[] {0.4},sinapses);
+double valor = neoronio.pesoStar(new double[] {0.4, 0.6, 0.1, 0.2},sinapses);
 Console.WriteLine(valor);
