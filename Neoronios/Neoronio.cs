@@ -30,6 +30,28 @@ namespace Neoronios
 
             return sum;
         }
+        public double ZNegativo(sinapse[] sinapses)
+        {
+            double sum = 0;
+            for (int i = 0; i < sinapses.Length; i++)
+            {
+                sum -= (sinapses[i].value * sinapses[i].peso);
+            }
+
+            return sum;
+        }
+        public double pesoStar(double[] Ys, sinapse[] sinapses)
+        {
+            double sum = 0;
+            
+            for (int i = 0; i < Ys.Length; i++) {
+                   //Σ w0 = Yi-f(x->,w->)*2
+                double erro =  (Ys[i] - Z(sinapses));
+                sum += erro * erro;
+            }
+            return sum;
+        }
+        
         //funcoes de transferencia
         public double Fsimples(double x)
         {
@@ -51,10 +73,7 @@ namespace Neoronios
          * para achar o maximo de uma funcao a derivada dela tem que ser igual a zero
          * 
          */
-        public double Derivada()
-        {
-
-        }
+     
 
     }
 }

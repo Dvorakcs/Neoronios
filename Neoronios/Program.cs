@@ -1,5 +1,29 @@
 ﻿using Neoronios;
-public class pacientes
-{
-    public double tempoVida { get; set; }
-}
+
+
+sinapse[] sinapses = new sinapse[]{
+    new sinapse
+    {
+        value= 1,
+        peso= 0.2,
+    },
+    new sinapse
+    {
+        value= 0,
+        peso= -0.1,
+    },
+    new sinapse
+    {
+        value= -1,
+        peso= 0.4,
+    },
+    new sinapse
+    {
+        value= 0.5,
+        peso= 0.1,
+    }
+};
+Neoronio neoronio = new Neoronio(sinapses);
+
+double valor = neoronio.pesoStar(new double[] {0.4},sinapses);
+Console.WriteLine(valor);
